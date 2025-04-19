@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- 添加装饰性圆形 -->
+    <div class="decorative-circle"></div>
+    <div class="decorative-circle"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">我的博客</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#knowledge">知识库</a></li>
+                <li><a href="#tools">工具库</a></li>
+                <li><a href="#methods">问题库</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 修改右侧导航栏 -->
+    <nav class="side-nav">
+        <!-- 添加收起按钮 -->
+        <button class="side-nav-toggle">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="side-nav-content">
+            <div class="profile">
+                <div class="avatar">
+                    <img src="https://via.placeholder.com/100" alt="头像" id="profile-avatar">
+                    <div class="avatar-overlay">
+                        <label for="avatar-upload" class="avatar-upload-label">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <h3>博主昵称</h3>
+                <p>个人简介：热爱技术，热爱生活</p>
+            </div>
+            <div class="quick-links">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i>首页</a></li>
+                    <li><a href="#knowledge"><i class="fas fa-book"></i>知识库</a></li>
+                    <li><a href="#tools"><i class="fas fa-tools"></i>工具库</a></li>
+                    <li><a href="#methods"><i class="fas fa-lightbulb"></i>问题库</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <h4>社交链接</h4>
+                <div class="social-icons">
+                    <a href="#" class="wechat-link" title="微信: c18272669942">
+                        <i class="fab fa-weixin"></i>
+                        <div class="qr-code wechat-qr">
+                            <img src="wechat.jpg" alt="微信二维码">
+                            <span>微信：c18272669942</span>
+                        </div>
+                    </a>
+                    <a href="#" class="qq-link" title="QQ: 1454774279">
+                        <i class="fab fa-qq"></i>
+                        <div class="qr-code qq-qr">
+                            <img src="qq.jpg" alt="QQ二维码">
+                            <span>QQ：1454774279</span>
+                        </div>
+                    </a>
+                    <a href="mailto:1454774279@qq.com" title="邮箱: 1454774279@qq.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>欢迎来到我的个人空间</h1>
+                <p>在这里分享我的知识、经验和成长历程</p>
+            </div>
+        </section>
+
+        <section id="knowledge" class="section">
+            <div class="section-header">
+                <h2>知识库</h2>
+                <div class="add-button">
+                    <button id="addKnowledgeBtn">
+                        <i class="fas fa-plus"></i> 添加知识
+                    </button>
+                </div>
+            </div>
+            <div class="knowledge-grid">
+                <!-- 删除默认内容 -->
+            </div>
+        </section>
+
+        <section id="tools" class="section">
+            <div class="section-header">
+                <h2>工具库</h2>
+                <div class="add-button">
+                    <button id="addToolBtn">
+                        <i class="fas fa-plus"></i> 添加工具
+                    </button>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <!-- 删除默认内容 -->
+            </div>
+        </section>
+
+        <!-- 添加工具弹窗 -->
+        <div class="modal" id="addToolModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>添加新工具</h3>
+                    <button class="close-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="addToolForm">
+                    <div class="form-group">
+                        <label for="toolIcon">选择图标</label>
+                        <div class="icon-selector">
+                            <button type="button" class="selected-icon">
+                                <i class="fas fa-code"></i>
+                            </button>
+                            <div class="icon-list">
+                                <i class="fas fa-code"></i>
+                                <i class="fas fa-file-alt"></i>
+                                <i class="fas fa-image"></i>
+                                <i class="fas fa-link"></i>
+                                <i class="fas fa-calculator"></i>
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="toolName">工具名称</label>
+                        <input type="text" id="toolName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="toolDesc">工具描述</label>
+                        <textarea id="toolDesc" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="toolLink">工具链接</label>
+                        <input type="url" id="toolLink" placeholder="输入工具链接（可选）">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">添加工具</button>
+                        <button type="button" class="cancel-btn">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section id="methods" class="section">
+            <div class="section-header">
+                <h2>问题库</h2>
+                <div class="add-button">
+                    <button id="addMethodBtn">
+                        <i class="fas fa-plus"></i> 添加问题
+                    </button>
+                </div>
+            </div>
+            <div class="methods-grid">
+                <!-- 删除默认内容 -->
+            </div>
+        </section>
+
+        <!-- 修改知识库模态框 -->
+        <div class="modal" id="addKnowledgeModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>添加新知识</h3>
+                    <button class="close-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="addKnowledgeForm">
+                    <div class="form-group">
+                        <label for="knowledgeTitle">标题</label>
+                        <input type="text" id="knowledgeTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="knowledgeDesc">描述</label>
+                        <textarea id="knowledgeDesc" required></textarea>
+                    </div>
+                    <!-- 知识库模态框中的文件上传部分 -->
+                    <div class="form-group">
+                        <label for="knowledgeFiles">上传附件</label>
+                        <input type="file" id="knowledgeFiles">
+                        <label for="knowledgeFiles" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span class="file-name-display">选择文件</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="knowledgeLink">相关链接</label>
+                        <input type="url" id="knowledgeLink" placeholder="输入相关链接（可选）">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">添加</button>
+                        <button type="button" class="cancel-btn">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 修改问题库模态框 -->
+        <div class="modal" id="addMethodModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>添加新问题</h3>
+                    <button class="close-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="addMethodForm">
+                    <div class="form-group">
+                        <label for="methodIcon">选择图标</label>
+                        <div class="icon-selector">
+                            <button type="button" class="selected-icon">
+                                <i class="fas fa-code"></i>
+                            </button>
+                            <div class="icon-list">
+                                <i class="fas fa-sitemap"></i>
+                                <i class="fas fa-project-diagram"></i>
+                                <i class="fas fa-code-branch"></i>
+                                <i class="fas fa-cogs"></i>
+                                <i class="fas fa-database"></i>
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="methodTitle">问题</label>
+                        <input type="text" id="methodTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="methodItems">详细内容</label>
+                        <textarea id="methodItems" required placeholder="输入方法项目，每行一个"></textarea>
+                    </div>
+                    <!-- 问题库模态框中的文件上传部分 -->
+                    <div class="form-group">
+                        <label for="methodFiles">上传附件</label>
+                        <input type="file" id="methodFiles">
+                        <label for="methodFiles" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span class="file-name-display">选择文件</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="methodLink">相关链接</label>
+                        <input type="url" id="methodLink" placeholder="输入相关链接（可选）">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">添加</button>
+                        <button type="button" class="cancel-btn">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 我的个人博客. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
